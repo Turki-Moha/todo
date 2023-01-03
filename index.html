@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h1>Todo List</h1>
+    <form id="todo-form">
+    <input type="text" id="todo-input" placeholder="Enter a task">
+    <button type="submit" id="add-button">Add</button>
+    <button type="button" id="clear-button">Clear</button>
+    </form>
+    <ul id="todo-list"></ul>
+    <script>
+    const input = document.getElementById("todo-input");
+    const addButton = document.getElementById("add-button");
+    const clearButton = document.getElementById("clear-button");
+    const list = document.getElementById("todo-list");
+
+    addButton.addEventListener("click", event => {
+        event.preventDefault();
+        const task = input.value;
+        input.value = "";
+        const li = document.createElement("li");
+        li.textContent = task;
+        list.appendChild(li);
+    });
+    clearButton.addEventListener("click", event => {
+        while (list.firstChild) {
+        list.removeChild(list.firstChild);
+        }
+    });
+    </script>
+</body>
+</html>
